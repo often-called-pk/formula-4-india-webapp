@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula 4 Race Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        label, select, input {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Race Details</h1>
+    <form id="raceForm">
+        <!-- File Upload 1 -->
+        <label for="file1">Upload File 1:</label>
+        <input type="file" name="file1" id="file1">
+
+        <!-- File Upload 2 -->
+        <label for="file2">Upload File 2:</label>
+        <input type="file" name="file2" id="file2">
+        
+        <!-- Year Selection -->
+        <label for="year">Select Year:</label>
+        <select name="year" id="year">
+            <option value="2024">2024</option>
+        </select>
+
+        <!-- Grand Prix Selection -->
+        <label for="data_source">Select Data Source:</label>
+        <select name="data_source" id="data_source">
+            <option value="RaceStudio3">RaceStudio3</option>
+            <option value="Marelli WinTAX4">Marelli WinTAX4</option>
+        </select>
+
+        <!-- Driver Selection 1 -->
+        <label for="driver1">Select Driver 1 name:</label>
+        <input type="text" name="driver1" id="driver1" placeholder="Enter 1st driver name">
+        </select>
+
+        <!-- Driver Selection 2 -->
+        <label for="driver2">Select Driver 2 name:</label>
+        <input type="text" name="driver2" id="driver2" placeholder="Enter 2nd driver name">
+        </select>
+
+        <!-- Analysis Selection -->
+        <label for="analysis">Select Analysis:</label>
+        <select name="analysis" id="analysis">
+            <option value="speed_vs_distance">Speed vs Distance plot</option>
+            <option value="lap_delta">Lap Delta plot</option>
+            <option value="telemetry_actions">Telemetry Actions plot</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="button" onclick="submitForm()">Generate</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // Get form values
+            const year = document.getElementById('year').value;
+            const data_source = document.getElementById('data_source').value;
+            const driver1 = document.getElementById('driver1').value;
+            const driver2 = document.getElementById('driver2').value;
+            const analysis = document.getElementById('analysis').value;
+
+            // Create the JSON object
+            const raceData = {
+                year: parseInt(year),
+                data_source: data_source,
+                drivers: [driver1, driver2],
+                analysis: analysis
+            };
+
+            // Convert the JSON object to a string
+            const raceDataString = JSON.stringify(raceData);
+
+            // Encode the JSON string in Base64
+            const encodedData = btoa(raceDataString);
+
+            // Redirect to /generate with the Base64-encoded data as query parameter
+            window.location.href = `/generate?data=${encodedData}`;
+        }
+    </script>
+</body>
+</html>
