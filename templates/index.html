@@ -53,8 +53,8 @@
         <!-- Grand Prix Selection -->
         <label for="data_source">Select Data Source:</label>
         <select name="data_source" id="data_source">
-            <option value="RaceStudio3">RaceStudio3</option>
-            <option value="Marelli WinTAX4">Marelli WinTAX4</option>
+            <option value="RaceStudio3">AiM Sports - RaceStudio3</option>
+            <option value="Marelli WinTAX4">Marelli - WinTAX4</option>
         </select>
 
         <!-- Driver Selection 1 -->
@@ -68,12 +68,19 @@
         </select>
 
         <!-- Analysis Selection -->
-        <label for="analysis">Select Analysis:</label>
-        <select name="analysis" id="analysis">
-            <option value="speed_vs_distance">Speed vs Distance plot</option>
-            <option value="lap_delta">Lap Delta plot</option>
-            <option value="telemetry_actions">Telemetry Actions plot</option>
-        </select>
+        <label>Select Analysis:</label>
+        <div>
+            <input type="checkbox" name="analysis" id="speed_vs_distance" value="speed_vs_distance">
+            <label for="speed_vs_distance">Speed vs Distance plot</label>
+        </div>
+        <div>
+            <input type="checkbox" name="analysis" id="lap_delta" value="lap_delta">
+            <label for="lap_delta">Lap Delta plot</label>
+        </div>
+        <div>
+            <input type="checkbox" name="analysis" id="telemetry_actions" value="telemetry_actions">
+            <label for="telemetry_actions">Telemetry Actions plot</label>
+        </div>
 
         <!-- Submit Button -->
         <button type="button" onclick="submitForm()">Generate</button>
@@ -86,7 +93,10 @@
             const data_source = document.getElementById('data_source').value;
             const driver1 = document.getElementById('driver1').value;
             const driver2 = document.getElementById('driver2').value;
-            const analysis = document.getElementById('analysis').value;
+
+            // Collect selected analyses
+            const analysisElements = document.querySelectorAll('input[name="analysis"]:checked');
+            const analysis = Array.from(analysisElements).map(el => el.value);
 
             // Create the JSON object
             const raceData = {

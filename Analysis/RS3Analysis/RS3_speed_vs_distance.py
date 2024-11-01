@@ -6,16 +6,16 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import json
 import os
-import fastf1 as ff1
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index - Copy.html')
 
 # Helper functions
 def load_data(file_path):
+    
     metadata_df = pd.read_csv(file_path, nrows=14, header=None, engine='python')
     telemetry_df = pd.read_csv(file_path, skiprows=14, low_memory=False)
     for col in telemetry_df.columns:
@@ -75,20 +75,8 @@ def generate_plot(file_path_car1, file_path_car2):
 @app.route('/generate', methods=['GET', 'POST'])
 
 def generate():
-
-    # Get the 'data' parameter from the query string
-    base64_json = request.args.get('data')
-
-    if not base64_json:
-        return jsonify({"error": "No data parameter provided"}), 400
-
-    if 'file_car1' not in request.files or 'file_car2' not in request.files:
-        return jsonify({"error": "Both files are required."}), 400
     
-    
-    file_car1 = request.files['file_car1']
-    file_car2 = request.files['file_car2']
-    
+
     fig = generate_plot(file_car1, file_car2)
     graph_html = fig.to_html(full_html=False)
 

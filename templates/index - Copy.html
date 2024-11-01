@@ -85,32 +85,29 @@
             </div>
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">3rd option - select year</p>
-                <select
+                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">Select Year:</p>
+                <select name="year" id="year"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#FFFFFF] focus:outline-0 focus:ring-0 border border-[#3D3D3D] bg-[#242424] focus:border-[#3D3D3D] h-14 bg-[image:--select-button-svg] placeholder:text-[#999999] p-[15px] text-base font-normal leading-normal"
                 >
-                  <option value="one">Select Year</option>
-                  <option value="two">two</option>
-                  <option value="three">three</option>
+                  <option value="2024">2024</option>
                 </select>
               </label>
             </div>
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">4th option - select data source</p>
-                <select
+                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">Select Data Source:</p>
+                <select name="data_source" id="data_source"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#FFFFFF] focus:outline-0 focus:ring-0 border border-[#3D3D3D] bg-[#242424] focus:border-[#3D3D3D] h-14 bg-[image:--select-button-svg] placeholder:text-[#999999] p-[15px] text-base font-normal leading-normal"
                 >
-                  <option value="one">Select Data Source</option>
-                  <option value="two">two</option>
-                  <option value="three">three</option>
+                <option value="RaceStudio3">AiM Sports - RaceStudio3</option>
+                <option value="MarelliWinTAX4">Marelli - WinTAX4</option>
                 </select>
               </label>
             </div>
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">5th option - type first driver's name</p>
-                <input
+                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">Driver 1 name:</p>
+                <input type="text" name="driver1" id="driver1"
                   placeholder="Type First Driver's Name"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#FFFFFF] focus:outline-0 focus:ring-0 border border-[#3D3D3D] bg-[#242424] focus:border-[#3D3D3D] h-14 placeholder:text-[#999999] p-[15px] text-base font-normal leading-normal"
                   value=""
@@ -119,26 +116,38 @@
             </div>
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">6th option - type second driver's name</p>
-                <input
+                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">Driver 2 name:</p>
+                <input type="text" name="driver2" id="driver2"
                   placeholder="Type Second Driver's Name"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#FFFFFF] focus:outline-0 focus:ring-0 border border-[#3D3D3D] bg-[#242424] focus:border-[#3D3D3D] h-14 placeholder:text-[#999999] p-[15px] text-base font-normal leading-normal"
                   value=""
                 />
               </label>
             </div>
+
+            <!-- Analysis Selection -->
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">7th option - select analysis type</p>
-                <select
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#FFFFFF] focus:outline-0 focus:ring-0 border border-[#3D3D3D] bg-[#242424] focus:border-[#3D3D3D] h-14 bg-[image:--select-button-svg] placeholder:text-[#999999] p-[15px] text-base font-normal leading-normal"
-                >
-                  <option value="one">Select Analysis Type</option>
-                  <option value="two">two</option>
-                  <option value="three">three</option>
-                </select>
+                <p class="text-[#FFFFFF] text-base font-medium leading-normal pb-2">Select Analysis:</p>
+                <!-- Checkbox for speed_vs_distance Analysis Type One -->
+                <div class="flex items-center" id="speed_vs_distance_container">
+                  <input type="checkbox" id="speed_vs_distance" name="analysis" value="speed_vs_distance" class="mr-2">
+                  <label for="speed_vs_distance" class="text-[#FFFFFF] text-base font-normal leading-normal">Speed vs Distance plot</label>
+                </div>
+                <!-- Checkbox for lap_delta Analysis Type Two -->
+                <div class="flex items-center" id="lap_delta_container">
+                  <input type="checkbox" id="lap_delta" name="analysis" value="lap_delta" class="mr-2">
+                  <label for="lap_delta" class="text-[#FFFFFF] text-base font-normal leading-normal">Lap Delta plot</label>
+                </div>
+                <!-- Checkbox for telemetry_actions Analysis Type Three -->
+                <div class="flex items-center" id="telemetry_actions_container">
+                  <input type="checkbox" id="telemetry_actions" name="analysis" value="telemetry_actions" class="mr-2">
+                  <label for="telemetry_actions" class="text-[#FFFFFF] text-base font-normal leading-normal">Telemetry Actions plot</label>
+                </div>
               </label>
             </div>
+            
+            <!-- Generate Button -->
             <div class="flex px-4 py-3 justify-center">
               <button
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 flex-1 bg-[#019863] text-[#FFFFFF] text-base font-bold leading-normal tracking-[0.015em]"
@@ -190,5 +199,72 @@
         </footer>
       </div>
     </div>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const dataSourceElement = document.getElementById('data_source');
+        const speedVsDistance = document.getElementById('speed_vs_distance_container');
+        const lapDelta = document.getElementById('lap_delta_container');
+        const telemetryActions = document.getElementById('telemetry_actions_container');
+
+        function updateCheckboxVisibility(selectedSource) {
+          if (selectedSource === 'RaceStudio3') {
+            speedVsDistance.style.display = 'flex';
+            lapDelta.style.display = 'flex';
+            telemetryActions.style.display = 'flex';
+          } else if (selectedSource === 'MarelliWinTAX4') {
+            speedVsDistance.style.display = 'none';
+            lapDelta.style.display = 'none';
+            telemetryActions.style.display = 'none';
+          } else {
+            speedVsDistance.style.display = 'flex';
+            lapDelta.style.display = 'flex';
+            telemetryActions.style.display = 'flex';
+          }
+        }
+
+        if (dataSourceElement) {
+          // Set initial visibility based on the default selected value
+          updateCheckboxVisibility(dataSourceElement.value);
+
+          // Add event listener for changes
+          dataSourceElement.addEventListener('change', function() {
+            updateCheckboxVisibility(this.value);
+          });
+        } else {
+          console.error('Data source element not found');
+        }
+      });
+
+      function submitForm() {
+        // Get form values
+        const year = document.getElementById('year').value;
+        const data_source = document.getElementById('data_source').value;
+        const driver1 = document.getElementById('driver1').value;
+        const driver2 = document.getElementById('driver2').value;
+
+        // Collect selected analyses
+        const analysisElements = document.querySelectorAll('input[name="analysis"]:checked');
+        const analysis = Array.from(analysisElements).map(el => el.value);
+
+        // Create the JSON object
+        const raceData = {
+          year: parseInt(year),
+          data_source: data_source,
+          drivers: [driver1, driver2],
+          analysis: analysis
+        };
+
+        // Convert the JSON object to a string
+        const raceDataString = JSON.stringify(raceData);
+
+        // Encode the JSON string in Base64
+        const encodedData = btoa(raceDataString);
+
+        // Redirect to /generate with the Base64-encoded data as query parameter
+        window.location.href = `/generate?data=${encodedData}`;
+      }
+    </script>
   </body>
 </html>
