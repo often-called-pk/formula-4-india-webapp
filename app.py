@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index - Copy.html')
+    return render_template('index.html')
 
 # Helper function to load metadata and telemetry
 def load_data(file_path):
@@ -193,7 +193,8 @@ def generate_plot(file_path_car1,file_path_car2):
     fig.update_annotations(font=dict(color='white'))
 
     # Show the plot
-    fig.show()
+    # fig.show()
+    return fig
 
 
 @app.route('/generate', methods=['POST'])
@@ -204,8 +205,15 @@ def generate():
     file1 = request.files['file1']
     file2 = request.files['file2']
 
+    # Save the uploaded files to the current directory
+    file1.save(file1.filename)
+    file2.save(file2.filename)
+
+    file1_path = file1.filename
+    file2_path = file2.filename
+
     # Generate the plot using the uploaded files
-    fig = generate_plot(file1, file2)
+    fig = generate_plot(file1_path, file2_path)
     graph_html = fig.to_html(full_html=False)
 
     return render_template('generate.html', plot=graph_html)
