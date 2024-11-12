@@ -168,8 +168,7 @@ def generate_plot(file_path_car1,file_path_car2):
                              width=[50],
                              base=group['Distance'].min(), 
                              orientation='h', name=f'{action_type}' if show_legend else None,
-                             showlegend=show_legend),
-                      row=row_idx, col=1)
+                             showlegend=show_legend), row=row_idx, col=1)
 
     # Plot action bars for the first car
     plot_action_bars(telemetry_FL_car1, driver_name_car1, 3)
@@ -178,7 +177,7 @@ def generate_plot(file_path_car1,file_path_car2):
     plot_action_bars(telemetry_FL_car2, driver_name_car2, 4)
     
     # Update layout
-    fig.update_layout(height=1200, width=2000, title_text="Telemetry Data Comparison: Fastest Lap",
+    fig.update_layout(height=1000, width=None, autosize=True, title_text="Telemetry Data Comparison: Fastest Lap",
                       template="plotly_dark",
                       font=dict(color='white'),
                       showlegend=True,
